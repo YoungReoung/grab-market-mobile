@@ -7,11 +7,12 @@ import { API_URL } from "./config/constants.js";
 import axios from "axios";
 
 export default function App() {
+  const [products, setProducts] = React.useState([]);
   React.useEffect(() => {
     axios
       .get(`${API_URL}/products`)
       .then((result) => {
-        console.log(result);
+        setProducts(result.data.products);
       })
       .catch((error) => {
         console.error(error);
